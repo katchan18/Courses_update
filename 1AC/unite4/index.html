@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Unité 4 – Système d’exploitation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>📁 Unité 4 : Système d’exploitation</h1>
+    <p>Leçons liées à la même unité</p>
+</header>
+
+<section class="lessons">
+
+    <div class="card">
+        <h3>📄 Cours</h3>
+        <p>Introduction aux systèmes</p>
+        <a href="#" onclick="ouvrirModal('cours.pdf'); return false;">Télécharger</a>
+    </div>
+
+    <div class="card">
+        <h3>📝 Exercices</h3>
+        <p>Série d’exercices corrigés</p>
+        <a href="#" onclick="ouvrirModal('exercices.pdf'); return false;">Télécharger</a>
+    </div>
+
+    <div class="card">
+        <h3>📘 Résumé</h3>
+        <p>Fiche de révision</p>
+        <a href="#" onclick="ouvrirModal('resume.pdf'); return false;">Télécharger</a>
+    </div>
+
+</section>
+
+<footer>
+    <p>
+        <a href="../index.html">⬅ Retour aux unités</a> |
+        <a href="../../index.html">🏠 Accueil</a>
+    </p>
+</footer>
+
+<!-- 🔐 Mot de passe (IDENTIQUE à ton site principal) -->
+<script>
+let fichierAtelecharger = "";
+const motDePasseCorrect = "Prince";
+
+function ouvrirModal(fichier) {
+    fichierAtelecharger = fichier;
+    document.getElementById("passwordInput").value = "";
+    document.getElementById("errorMessage").textContent = "";
+    document.getElementById("passwordModal").style.display = "block";
+}
+
+function fermerModal() {
+    document.getElementById("passwordModal").style.display = "none";
+}
+
+function validerMotDePasse() {
+    const saisie = document.getElementById("passwordInput").value;
+
+    if (saisie === motDePasseCorrect) {
+        const lien = document.createElement("a");
+        lien.href = fichierAtelecharger;
+        lien.download = "";
+        document.body.appendChild(lien);
+        lien.click();
+        document.body.removeChild(lien);
+        fermerModal();
+    } else {
+        document.getElementById("errorMessage").textContent = "Mot de passe incorrect ❌";
+    }
+}
+</script>
+
+<div id="passwordModal" class="modal">
+    <div class="modal-content">
+        <h3>🔐 Accès protégé</h3>
+        <input type="password" id="passwordInput" placeholder="Mot de passe">
+        <p id="errorMessage"></p>
+        <div class="modal-actions">
+            <button onclick="validerMotDePasse()">Valider</button>
+            <button class="cancel" onclick="fermerModal()">Annuler</button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
