@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>2AC – Informatique</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- IMPORTANT : lien vers le CSS principal -->
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>📘 2ème Année Collège (2AC)</h1>
+    <p>Cours disponibles</p>
+</header>
+
+<section class="lessons">
+    <h2>Unités du programme – 2AC</h2>
+
+    <div class="card">
+        <h3>📁 Unité 1 : Système informatique</h3>
+        <p>Matériel, Logiciel</p>
+        <a href="unite1/index.html">Ouvrir le dossier</a>
+    </div>
+
+    <div class="card">
+        <h3>📁 Unité 2 : Réseaux informatiques</h3>
+        <p>Réseaux filaires et sans fil</p>
+        <a href="unite2/index.html">Ouvrir le dossier</a>
+    </div>
+
+    <div class="card">
+        <h3>📁 Unité 3 : Système d'exploitation</h3>
+        <p>Windows, Mac OS, Linux ...</p>
+        <a href="unite3/index.html">Ouvrir le dossier</a>
+    </div>
+    
+    <div class="card">
+        <h3>📁 Unité 4 : Logiciel Excel</h3>
+        <p>Notions de base</p>
+        <a href="unite4/index.html">Ouvrir le dossier</a>
+    </div>
+</section>
+
+
+<footer>
+    <p><a href="../index.html">⬅ Retour à l’accueil</a></p>
+</footer>
+
+<!-- 🔐 SCRIPT MOT DE PASSE (OBLIGATOIRE) -->
+<script>
+let fichierAtelecharger = "";
+const motDePasseCorrect = "Prince"; // même mot de passe
+
+function ouvrirModal(fichier) {
+    fichierAtelecharger = fichier;
+    document.getElementById("passwordInput").value = "";
+    document.getElementById("errorMessage").textContent = "";
+    document.getElementById("passwordModal").style.display = "block";
+}
+
+function fermerModal() {
+    document.getElementById("passwordModal").style.display = "none";
+}
+
+function validerMotDePasse() {
+    const saisie = document.getElementById("passwordInput").value;
+
+    if (saisie === motDePasseCorrect) {
+        const lien = document.createElement("a");
+        lien.href = fichierAtelecharger;
+        lien.download = "";
+        document.body.appendChild(lien);
+        lien.click();
+        document.body.removeChild(lien);
+        fermerModal();
+    } else {
+        document.getElementById("errorMessage").textContent = "Mot de passe incorrect ❌";
+    }
+}
+</script>
+
+<!-- MODAL -->
+<div id="passwordModal" class="modal">
+    <div class="modal-content">
+        <h3>🔐 Accès protégé</h3>
+        <p>Entrez le mot de passe pour télécharger</p>
+        <input type="password" id="passwordInput">
+        <p id="errorMessage"></p>
+        <div class="modal-actions">
+            <button onclick="validerMotDePasse()">Valider</button>
+            <button class="cancel" onclick="fermerModal()">Annuler</button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
