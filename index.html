@@ -6,10 +6,81 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
 </head>
-    
+
+<body>
+
+<header>
+    <div class="hero-badge">
+        Plateforme Numérique <span>2026/2027</span>
+    </div>
+    <h1>Espace Élèves</h1>
+    <p>Téléchargez vos leçons ici</p>
+</header>
+
+<section class="hero">
+    <img src="img3.jpg" alt="Apprentissage numérique" class="side-image left">
+
+    <div class="hero-content">
+        <h2>Plateforme informatique pédagogique</h2>
+        <p>Cours organisés, clairs et accessibles à tout moment</p>
+        <p style="font-family: Arial, sans-serif; font-size: 18px; font-weight: bold; font-style: italic; color: #1F305E;">
+  By half blood Prince.
+</p>
+    </div>
+
+    <img src="img4.jpg" alt="Enseignement informatique" class="side-image right">
+</section>
+
+
+<section class="lessons">
+    <h2>Choisissez votre niveau</h2>
+
+    <div class="card">
+        <div class="card-icon">📘</div>
+        <h3>1ère Année Collège (1AC)</h3>
+        <p>Cours de base en informatique</p>
+        <a href="1AC/index.html">Accéder</a>
+    </div>
+
+    <div class="card">
+        <div class="card-icon">📗</div>
+        <h3>2ème Année Collège (2AC)</h3>
+        <p>Sécurité, systèmes et algorithmes</p>
+        <a href="2AC/index.html">Accéder</a>
+    </div>
+
+    <div class="card">
+        <div class="card-icon">📙</div>
+        <h3>3ème Année Collège (3AC)</h3>
+        <p>Notions avancées</p>
+        <a href="3AC/index.html">Accéder</a>
+    </div>
+</section>
+
+
+<footer>
+    <p>© 2026 – Mohammed Cherki Professeur d'Informatique</p>
+</footer>
+
+<!-- MODAL MOT DE PASSE -->
+<div id="passwordModal" class="modal">
+    <div class="modal-content">
+        <h3>Accès protégé</h3>
+        <p>Entrez le mot de passe pour télécharger</p>
+
+        <input type="password" id="passwordInput" placeholder="Mot de passe">
+        <p id="errorMessage"></p>
+
+        <div class="modal-actions">
+            <button onclick="validerMotDePasse()">Valider</button>
+            <button class="cancel" onclick="fermerModal()">Annuler</button>
+        </div>
+    </div>
+</div>
+
 <script>
 let fichierAtelecharger = "";
-const motDePasseCorrect = "Prince"; // 🔴 change ici
+const motDePasseCorrect = "Prince";
 
 function ouvrirModal(fichier) {
     fichierAtelecharger = fichier;
@@ -34,99 +105,28 @@ function validerMotDePasse() {
         document.body.removeChild(lien);
         fermerModal();
     } else {
-        document.getElementById("errorMessage").textContent = "Mot de passe incorrect ❌";
+        document.getElementById("errorMessage").textContent = "Mot de passe incorrect";
     }
 }
 </script>
 
-<!-- MODAL MOT DE PASSE -->
-<div id="passwordModal" class="modal">
-    <div class="modal-content">
-        <h3>🔐 Accès protégé</h3>
-        <p>Entrez le mot de passe pour télécharger</p>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+            }
+        });
+    }, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
 
-        <input type="password" id="passwordInput" placeholder="Mot de passe">
-        <p id="errorMessage"></p>
-
-        <div class="modal-actions">
-            <button onclick="validerMotDePasse()">Valider</button>
-            <button class="cancel" onclick="fermerModal()">Annuler</button>
-        </div>
-    </div>
-</div>
-
-
-<body>
-
-<header>
-    <h1>📘 Espace Élèves</h1>
-    <p>Téléchargez vos leçons ici</p>
-</header>
-
-<section class="hero">
-    <img src="img3.jpg" alt="Apprentissage numérique" class="side-image left">
-
-    <div class="hero-content">
-        <h2>📚 Plateforme informatique pédagogique</h2>
-        <p>Cours organisés, clairs et accessibles à tout moment<br></br><br><p style="font-family: Arial, sans-serif; font-size: 18px; font-weight: bold; font-style: italic; color: #1F305E;">
-  By half blood Prince.
-</p></br></p>
-    </div>
-
-    <img src="img4.jpg" alt="Enseignement informatique" class="side-image right">
-</section>
-
-<!--<section class="lessons">
-    <h2>📂 Cours disponibles</h2>
-
-    <div class="card">
-        <span class="icon">💻</span>
-        <h3>Système d'exploitation</h3>
-        <p>Windows, Mac, Linux, Chrome Os</p>
-        <a href="#" onclick="ouvrirModal('cours_system_dexploitation.pdf'); return false;">Télécharger</a>
-    </div>
-
-    <div class="card">
-        <span class="icon">📶</span>
-        <h3>Série d'exercices</h3>
-        <p>Réseau filaire, sans fil, Wifi</p>
-        <a href="#" onclick="ouvrirModal('RI_serie.pdf'); return false;">Télécharger</a>
-
-    </div>
-
-</section> -->
-
-
-<section class="lessons">
-    <h2>Choisissez votre niveau</h2>
-
-    <div class="card">
-        <h3>📘 1ère Année Collège (1AC)</h3>
-        <p>Cours de base en informatique</p>
-        <a href="1AC/index.html">Accéder</a>
-    </div>
-
-    <div class="card">
-        <h3>📗 2ème Année Collège (2AC)</h3>
-        <p>Sécurité, systèmes et algorithmes</p>
-        <a href="2AC/index.html">Accéder</a>
-    </div>
-
-    <div class="card">
-        <h3>📙 3ème Année Collège (3AC)</h3>
-        <p>Notions avancées</p>
-        <a href="3AC/index.html">Accéder</a>
-    </div>
-</section>
-
-
-
-<footer>
-    <p>© 2025 – Mohammed Cherki Professeur d’Informatique</p>
-</footer>
+    document.querySelectorAll(".card, .hero-content").forEach(function(el, i) {
+        el.classList.add("reveal");
+        if (i < 4) el.classList.add("reveal-delay-" + Math.min(i + 1, 4));
+        observer.observe(el);
+    });
+});
+</script>
 
 </body>
 </html>
-
-
-
