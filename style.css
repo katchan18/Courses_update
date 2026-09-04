@@ -379,7 +379,8 @@ header p {
   box-shadow: var(--shadow-xs);
   position: relative;
   overflow: hidden;
-  transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s var(--ease);
+  transition: transform .4s var(--ease-spring), box-shadow .4s var(--ease), border-color .3s var(--ease);
+  cursor: pointer;
 }
 
 .card::before {
@@ -397,9 +398,21 @@ header p {
 .card:hover::before { opacity: 1; }
 
 .card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-12px) scale(1.03) rotate(-0.5deg);
+  box-shadow: var(--shadow-xl), 0 0 40px rgba(108,92,231,.12);
   border-color: transparent;
+}
+
+.card:hover .card-icon {
+  transform: scale(1.15) rotate(-8deg);
+}
+
+.card:hover h3 {
+  color: var(--card-accent, var(--primary));
+}
+
+.card:hover p {
+  color: var(--text-secondary);
 }
 
 /* Couleurs par position */
@@ -418,6 +431,7 @@ header p {
   font-size: 22px;
   margin-bottom: var(--sp-4);
   background: var(--primary-tint);
+  transition: transform .4s var(--ease-spring), background .3s var(--ease);
 }
 
 .lessons .card:nth-child(4n+3) .card-icon { background: var(--accent-tint); }
@@ -431,12 +445,14 @@ header p {
   margin-bottom: var(--sp-2);
   color: var(--ink);
   line-height: 1.35;
+  transition: color .3s var(--ease);
 }
 
 .card p {
   color: var(--muted);
   font-size: var(--fs-sm);
   line-height: 1.6;
+  transition: color .3s var(--ease);
 }
 
 .icon {
@@ -459,7 +475,7 @@ header p {
   font-weight: 600;
   font-size: var(--fs-sm);
   letter-spacing: 0.01em;
-  transition: all .25s var(--ease);
+  transition: all .3s var(--ease-spring);
   box-shadow: 0 4px 12px rgba(108,92,231,.25);
 }
 
@@ -789,7 +805,10 @@ footer a:hover {
   transform: translateY(28px);
   transition: opacity .6s var(--ease), transform .6s var(--ease);
 }
-.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 .reveal-delay-1 { transition-delay: .1s; }
 .reveal-delay-2 { transition-delay: .2s; }
 .reveal-delay-3 { transition-delay: .3s; }

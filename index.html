@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
 
-    document.querySelectorAll(".card, .hero-content").forEach(function(el, i) {
+    document.querySelectorAll(".hero-content, .section-header").forEach(function(el, i) {
         el.classList.add("reveal");
         if (i < 4) el.classList.add("reveal-delay-" + Math.min(i + 1, 4));
         observer.observe(el);
